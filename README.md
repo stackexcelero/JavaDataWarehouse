@@ -9,3 +9,4 @@ This is a Java ETL project with aim of implementing:
 Additionally:
 -Generates JSON's of the processed data.
 -Validates it with a JSON schema.
+
