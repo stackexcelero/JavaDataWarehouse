@@ -8,6 +8,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,14 +22,12 @@ import javax.persistence.TemporalType;
 @Table(name="application")
 public class Application {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="applicationId")
 	private Integer applicationId;
 	
 	@Basic
 	private char status;
-	
-	@Basic
-	private String title;
 	
 	@Basic
 	private String description;
@@ -49,9 +49,9 @@ public class Application {
 	Set<Applicant> applicants = new LinkedHashSet<>();
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name="application_applicant", joinColumns = { @JoinColumn(name="applicationId") }, 
-		inverseJoinColumns = { @JoinColumn( name="assetId" ) })
-	Set<Asset> assets = new LinkedHashSet<>();
+	@JoinTable( name="application_opera", joinColumns = { @JoinColumn(name="applicationId") }, 
+		inverseJoinColumns = { @JoinColumn( name="operaId" ) })
+	Set<Opera> operas = new LinkedHashSet<>();
 	
 	public Application() {}
 
@@ -69,14 +69,6 @@ public class Application {
 
 	public void setStatus(char status) {
 		this.status = status;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getDescription() {
@@ -119,12 +111,11 @@ public class Application {
 		this.applicants = requestors;
 	}
 
-	public Set<Asset> getAssets() {
-		return assets;
+	public Set<Opera> getOperas() {
+		return operas;
 	}
 
-	public void setAssets(Set<Asset> assets) {
-		this.assets = assets;
+	public void setOperas(Set<Opera> operas) {
+		this.operas = operas;
 	}
-	
 }

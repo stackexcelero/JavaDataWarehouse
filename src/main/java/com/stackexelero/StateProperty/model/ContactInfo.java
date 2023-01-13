@@ -4,6 +4,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="contact")
 public class ContactInfo {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private Integer id;
 	
@@ -29,7 +32,7 @@ public class ContactInfo {
 	private String address;
 	
 	@Basic
-	private Integer civicNumber;
+	private Integer houseNumber;
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -77,11 +80,19 @@ public class ContactInfo {
 		this.address = address;
 	}
 
-	public Integer getCivicNumber() {
-		return civicNumber;
+	public Integer getHouseNumber() {
+		return houseNumber;
 	}
 
-	public void setCivicNumber(Integer civicNumber) {
-		this.civicNumber = civicNumber;
+	public void setHouseNumber(Integer houseNumber) {
+		this.houseNumber = houseNumber;
+	}
+
+	public Applicant getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
 	}
 }

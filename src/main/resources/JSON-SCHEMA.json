@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/product.schema.json",
+  "title": "Product",
+  "description": "Application for hydraulic State Property data ETL",
+  "type": "object",
+  "required": ["description", "applicationType", "requestors"],
+  "additionalProperties": false,
+  "properties": {
+		"description": {
+		  "description": "Detailed description of the application",
+		  "type": "string"
+		},
+		"applicationType": {
+			"description": "Type of the application",
+			"type": "string"
+		},
+		"status": {
+			"description": "Status of the application",
+			"type": "string",
+			"enum": ["O", "C"]
+		},
+		"startDate": {
+			"description": "Application start date",
+			"type": "string"
+		},
+		"endDate": {
+			"description": "Application end date",
+			"type": "string"
+		},
+		"requestors": {
+			"description": "Requestors of the application",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": ["name", "applicantType"],
+				"properties": {
+					"name": {
+						"description": "Name of the requestor",
+						"type": "string"
+					},
+					"lastName": {
+						"description": "Last name of the requestor",
+						"type": "string"
+					},
+					"dateOfBirth": {
+						"description": "Date of birth of the requestor",
+						"type": "string"
+					},
+					"applicantType": {
+						"description": "Requestor type, Human or Organization",
+						"type": "string",
+						"enum": ["Human", "Organization"]
+					},
+					"contacts": {
+						"description": "Constacs of the requestor",
+						"type": "object",
+						"properties": {
+							"telephone": {
+								"description": "Telephone number of the requestor",
+								"type": "string"
+							},
+							"email": {
+								"description": "Email of the requestor",
+								"type": "string"
+							},
+							"postcode": {
+								"description": "Postcode of the requestor",
+								"type": "string"
+							},
+							"address": {
+								"description": "Address of the requestor",
+								"type": "string"
+							},
+							"houseNumber": {
+								"description": "Address of the requestor",
+								"type": "integer"
+							}
+						}
+					}
+				}
+			}
+		},
+		"operas": {
+			"description": "Requestors of the application",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"required": ["operaType", "assetWorks", "council"],
+				"properties": {
+					"operaType": {
+		    			"description": "Type of Opera(work)",
+		    			"type": "string"
+			    	},
+			    	"assetWorks": {
+			    		"description": "Works of asset",
+			    		"type": "string"
+			    	},
+			    	"coordinateX": {
+			    		"description": "Location of opera(Coordinate X)",
+			    		"type": "number"
+			    	},
+			    	"coordinateY": {
+			    		"description": "Location of opera(Coordinate Y)",
+			    		"type": "number"
+			    	},
+			    	"council": {
+			    		"description": "council of the opera",
+			    		"type": "string"
+			    	},
+			    	"postcode": {
+			    		"description": "postcode of the opera",
+			    		"type": "string"
+			    	},
+			    	"expences": {
+			    		"type": "array",
+			    		"items": {
+			    			"type": "object",
+			    			"properties": {
+			    				"description": {
+			    					"description": "Description of expences",
+			    					"type": "string"
+			    				},
+			    				"amount": {
+			    					"description": "Amount of expences",
+			    					"type": "number"
+			    				},
+			    				"date": {
+			    					"description": "Date of expences",
+			    					"type": "string"
+			    				}
+			    			}
+			    		}
+			    	}
+				}
+			}
+		}
+  }
+}
