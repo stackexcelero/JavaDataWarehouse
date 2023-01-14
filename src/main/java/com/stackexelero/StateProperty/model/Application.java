@@ -1,5 +1,6 @@
 package com.stackexelero.StateProperty.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -23,7 +24,6 @@ import javax.persistence.TemporalType;
 public class Application {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="applicationId")
 	private Integer applicationId;
 	
 	@Basic
@@ -117,5 +117,12 @@ public class Application {
 
 	public void setOperas(Set<Opera> operas) {
 		this.operas = operas;
+	}
+
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		return "Application [applicationId=" + applicationId + ", status=" + status + ", description=" + description
+				+ ", applicationType=" + applicationType + ", startDate=" + sdf.format(startDate.getTime()) + ", endDate=" + sdf.format(endDate.getTime()) + "]";
 	}
 }

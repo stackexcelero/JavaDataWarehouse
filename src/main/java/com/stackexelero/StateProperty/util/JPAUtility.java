@@ -1,20 +1,24 @@
 package com.stackexelero.StateProperty.util;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public class JPAUtility {
-	//private final String pathToPersistenceXml = "./resources/META-INF/persistence.xml";
+	private static final EntityManager em;
+	private static final SessionFactory sf;
 	
-	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ETLDB");
-	
+	static {
+		em = Persistence.createEntityManagerFactory("ETLDB").createEntityManager();
+		sf = em.unwrap(Session.class).getSessionFactory();
+	}
 
-	public static EntityManager getEntityManager() {
-		return emf.createEntityManager();
+	public static SessionFactory getSessionFactory() {
+		return sf;
 	}
-	public static void close() {
-		emf.close();
-	}
+//	private static void close() {
+//		em.close();
+//	}
 }

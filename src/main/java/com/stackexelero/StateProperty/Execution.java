@@ -9,8 +9,6 @@ public class Execution {
 	public static void main(String[] args) {
 		System.out.println("--Start--");
 		
-		EntityManager entity = JPAUtility.getEntityManager();
-		entity.close();
 		
 		System.out.println("--END--");
 		System.exit(0);
