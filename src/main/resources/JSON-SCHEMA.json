@@ -11,7 +11,7 @@
 		  "description": "Detailed description of the application",
 		  "type": "string"
 		},
-		"applicationType": {
+		"type": {
 			"description": "Type of the application",
 			"type": "string"
 		},
@@ -47,7 +47,7 @@
 						"description": "Date of birth of the requestor",
 						"type": "string"
 					},
-					"applicantType": {
+					"type": {
 						"description": "Requestor type, Human or Organization",
 						"type": "string",
 						"enum": ["Human", "Organization"]
@@ -82,13 +82,13 @@
 			}
 		},
 		"operas": {
-			"description": "Requestors of the application",
+			"description": "Opera's of the application",
 			"type": "array",
 			"items": {
 				"type": "object",
 				"required": ["operaType", "assetWorks", "council"],
 				"properties": {
-					"operaType": {
+					"type": {
 		    			"description": "Type of Opera(work)",
 		    			"type": "string"
 			    	},
