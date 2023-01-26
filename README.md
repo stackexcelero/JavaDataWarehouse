@@ -1,2 +1,2 @@
-Application for Property data ETL.
+Application for Data Warehousing using Java.
 
